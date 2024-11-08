@@ -7,16 +7,19 @@
 // Step 3: Create a .gitignore file and add .env to it
 
 // Step 4: Import dotenv config
-
+require('dotenv').config()
+const apiKey=process.env.APIKEY
 // Step 5: Access the API key from the .env file using process.env and store it in a variable
 
 // Step 6: Construct the request URL using the environmental variable
-const requestURL = "https://api.nasa.gov/planetary/apod?api_key=";
-
+const requestURL = "https://api.nasa.gov/planetary/apod?api_key=xK8iKlWY69uRiFJpthW3EV2WIcZYRGI2IYYnmWxD";
+try{
 async function fetchData(url) {
   // Step 7: Wrap your code in a try {} block
   const response = await fetch(url);
-
+if(response.ok == false){
+  console.log(response.status)
+}
   // Step 8: Check if the response status is not OK
   // Log an error message if the response status is not OK
 
@@ -29,7 +32,10 @@ async function fetchData(url) {
 }
 
 fetchData(requestURL);
-
+console.log(requestURL)
+}catch(error){
+console.log(error.message)
+}
 // Step 11: Add, Commit, & Push. Look on at the repo on GitHub and notice that your API is never shown publicly. 
 
 
